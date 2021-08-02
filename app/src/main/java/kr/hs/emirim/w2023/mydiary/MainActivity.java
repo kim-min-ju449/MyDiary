@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mMianRecycleView;
     private MainAdapter mAdapter;
     private List<Board> mBoardList;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mMianRecycleView = findViewById(R.id.main_recycle_view);
-       // findViewById(R.id.main_write_button).setOnClickListener(this);
+        //btn=findViewById(R.id.main_write_button).setOnClickListener(this);
 
         mBoardList = new ArrayList<>();
         mBoardList.add(new Board(null,"fff",null));
@@ -38,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-//    @Override
-//    public void OnClick(View v){
-//
-//    }
+    //@Override
+    //public void onClick(View v){
+
+    //}
 
     private class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
 
