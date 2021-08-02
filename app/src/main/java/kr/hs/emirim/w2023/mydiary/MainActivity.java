@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private RecyclerView mMianRecycleView;
     private MainAdapter mAdapter;
     private List<Board> mBoardList;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mMianRecycleView = findViewById(R.id.main_recycle_view);
-        //findViewById(R.id.main_write_button).setOnClickListener(this);
+        findViewById(R.id.main_write_button).setOnClickListener(this);
 
         mBoardList = new ArrayList<>();
         mBoardList.add(new Board(null,"fff",null));
@@ -40,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    //@Override
-    //public void onClick(View v){
 
-    //}
+    @Override
+    public void onClick(View v) {
+
+    }
 
     private class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
 
