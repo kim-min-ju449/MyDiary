@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WriteActivity extends AppCompatActivity {
+public class WriteActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
@@ -35,23 +36,34 @@ public class WriteActivity extends AppCompatActivity {
         mwriteContentsText = findViewById(R.id.write_contents_text);
         mwriteNameText = findViewById(R.id.write_name_text);
 
+        findViewById(R.id.main_write_button).setOnClickListener(this);
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
         Map<String, Object> post = new HashMap<>();
         post.put("id","");
         post.put("title",mwriteTitleText.getText().toString());
         post.put("contents", mwriteContentsText.getText().toString());
 
         mStore.collection("board").add(post)
-        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(WriteActivity.this,"연동성공",Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(WriteActivity.this,"업로드성공",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(WriteActivity.this,"업로드실패",Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                    }
+                });
+
+
 
 
     }

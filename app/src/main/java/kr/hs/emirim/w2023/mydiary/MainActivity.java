@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mMianRecycleView = findViewById(R.id.main_recycle_view);
-        //btn=findViewById(R.id.main_write_button).setOnClickListener(this);
+        //findViewById(R.id.main_write_button).setOnClickListener(this);
 
         mBoardList = new ArrayList<>();
         mBoardList.add(new Board(null,"fff",null));
