@@ -6,11 +6,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mMianRecycleView;
     private MainAdapter mAdapter;
     private List<Board> mBoardList;
+    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     Button btn;
 
     @Override
@@ -28,16 +36,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mMianRecycleView = findViewById(R.id.main_recycle_view);
         findViewById(R.id.main_write_button).setOnClickListener(this);
+        mStore.collection("board").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String id = (String)document.getData().get("id");
+                                String title = (String)document.getData().get("title");
+                                String contents = (String)document.getData().get("contents");
+                                Board data = new Board(id, title, contents);
+                                mBoardList = new ArrayList<>();
+                                //mBoardList.add(data);
+//                                mBoardList.add(new Board(null,"fff",null));
+//                                mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
+//                                mBoardList.add(new Board(null,"OK",null));
+//                                mBoardList.add(new Board(null,"반갑다",null));
 
-        mBoardList = new ArrayList<>();
-        mBoardList.add(new Board(null,"fff",null));
-        mBoardList.add(new Board(null,"fff",null));
-        mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
-        mBoardList.add(new Board(null,"OK",null));
-        mBoardList.add(new Board(null,"반갑다",null));
+                            }
+                            mAdapter = new MainAdapter(mBoardList);
+                            mMianRecycleView.setAdapter(mAdapter);
 
-        mAdapter = new MainAdapter(mBoardList);
-        mMianRecycleView.setAdapter(mAdapter);
+                        }
+                    }
+                });
+
+
+
 
 
 

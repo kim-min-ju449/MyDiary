@@ -26,6 +26,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
     private EditText mwriteTitleText;
     private EditText mwriteContentsText;
     private EditText mwriteNameText;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +44,20 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        id=mStore.collection("board").getId();
         Map<String, Object> post = new HashMap<>();
-        post.put("id","");
+        post.put("id",id);
         post.put("title",mwriteTitleText.getText().toString());
         post.put("contents", mwriteContentsText.getText().toString());
 
-        mStore.collection("board").add(post)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        mStore.collection("board").document(id).set(post)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         Toast.makeText(WriteActivity.this,"업로드성공",Toast.LENGTH_SHORT).show();
                     }
                 })
+
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
