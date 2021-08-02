@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,11 +40,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMianRecycleView.setAdapter(mAdapter);
 
 
+
     }
 
     @Override
     public void onClick(View v) {
-
+        //Intent intent = new Intent(this, WriteActivity.class);
+        //startActivity(intent);
+        startActivity(new Intent(this, WriteActivity.class));
     }
 
     private class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {

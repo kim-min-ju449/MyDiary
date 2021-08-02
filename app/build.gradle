@@ -9,10 +9,11 @@ android {
 
     defaultConfig {
         applicationId "kr.hs.emirim.w2023.mydiary"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion 15
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
