@@ -55,6 +55,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(WriteActivity.this,"업로드성공",Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
 

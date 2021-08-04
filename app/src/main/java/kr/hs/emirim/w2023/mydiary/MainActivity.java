@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,12 +28,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MainAdapter mAdapter;
     private List<Board> mBoardList;
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
-    Button btn;
+    private FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
 
         mMianRecycleView = findViewById(R.id.main_recycle_view);
         findViewById(R.id.main_write_button).setOnClickListener(this);
@@ -45,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 String id = (String)document.getData().get("id");
                                 String title = (String)document.getData().get("title");
                                 String contents = (String)document.getData().get("contents");
-                                Board data = new Board(id, title, contents);
+                                Board data = new Board(id,title, contents);
                                 mBoardList = new ArrayList<>();
-                                //mBoardList.add(data);
-//                                mBoardList.add(new Board(null,"fff",null));
+                                mBoardList.add(data);
+                                mBoardList.add(new Board(null,"fff",null));
 //                                mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
 //                                mBoardList.add(new Board(null,"OK",null));
 //                                mBoardList.add(new Board(null,"반갑다",null));
