@@ -37,7 +37,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
         mwriteContentsText = findViewById(R.id.write_contents_text);
         mwriteNameText = findViewById(R.id.write_name_text);
 
-        findViewById(R.id.main_write_button).setOnClickListener(this);
+        findViewById(R.id.write_upload_button).setOnClickListener(this);
 
 
     }

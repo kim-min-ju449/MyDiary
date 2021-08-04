@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                String id = (String)document.getData().get("id");
-                                String title = (String)document.getData().get("title");
-                                String contents = (String)document.getData().get("contents");
-                                Board data = new Board(id,title, contents);
+                                String id = (String) document.getData().get("id");
+                                String title = (String) document.getData().get("title");
+                                String contents = (String) document.getData().get("contents");
+                                Board data = new Board(id, title, contents);
                                 mBoardList = new ArrayList<>();
                                 mBoardList.add(data);
-                                mBoardList.add(new Board(null,"fff",null));
+                                mBoardList.add(new Board(null, "fff", null));
 //                                mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
 //                                mBoardList.add(new Board(null,"OK",null));
 //                                mBoardList.add(new Board(null,"반갑다",null));
@@ -66,16 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
 
 
-
-
-
-
     }
+
 
     @Override
     public void onClick(View v) {
-        //Intent intent = new Intent(this, WriteActivity.class);
-        //startActivity(intent);
         startActivity(new Intent(this, WriteActivity.class));
     }
 

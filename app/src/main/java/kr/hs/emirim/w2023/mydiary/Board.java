@@ -6,9 +6,9 @@ public class Board {
     private String contents;
     private String name;
 
-    public Board(){
-
-    }
+//    public Board(){
+//
+//    }
     public Board(String id, String title, String contents){
         this.id =id;
         this.title = title;
