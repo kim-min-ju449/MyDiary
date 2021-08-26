@@ -11,7 +11,7 @@
         android:id="@+id/main_recycle_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_write_button"
@@ -21,8 +21,19 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/ic_edit"
         android:layout_margin="8dp"/>
-    
 
+    <Button
+        android:id="@+id/heeling"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="650dp"
+        android:backgroundTint="@color/title"
+        android:text="힐링하기"
+        android:textColor="@color/black" />
 
 
 </RelativeLayout>
