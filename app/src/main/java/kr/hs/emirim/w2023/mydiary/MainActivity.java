@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 mBoardList = new ArrayList<>();
                                 mBoardList.add(data);
                                 mBoardList.add(new Board(null, "fff", null));
-//                                mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
+                                mBoardList.add(new Board(null,"ㅋㅋㅋㅋ",null));
 //                                mBoardList.add(new Board(null,"OK",null));
 //                                mBoardList.add(new Board(null,"반갑다",null));
 
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         startActivity(new Intent(this, WriteActivity.class));
+
     }
 
     private class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
